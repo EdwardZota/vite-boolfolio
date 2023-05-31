@@ -1,12 +1,10 @@
 <script >
 
 import MyHeader from './components/MyHeader.vue';
-import MyMain from './components/MyMain.vue';
 
 export default {
   components:{
-    MyHeader,
-    MyMain
+    MyHeader
   }
 }
 </script>
@@ -14,7 +12,7 @@ export default {
 <template>
 <MyHeader></MyHeader>
 
-<MyMain></MyMain>
+<router-view></router-view>
 
 
 
