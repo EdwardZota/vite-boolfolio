@@ -47,7 +47,7 @@ export default {
                     </div>
                     <span>Tecnologia :</span>
                     <div v-if="project.technologies && project.technologies.length > 0">
-                        <span v-for="technology in this.project.technologies">
+                        <span v-for="(technology,index) in this.project.technologies">
                             {{ technology.name }}<span v-if="index < project.technologies.length - 1">/</span>
                         </span>
                     </div>
