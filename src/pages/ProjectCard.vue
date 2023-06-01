@@ -28,6 +28,14 @@ export default {
     },
     mounted(){
         this.getProjectItem();
+    },
+    created(){
+        this.$watch(
+            ()=>this.$route.params,
+            ()=>{
+                this.getProjectItem();
+            }
+        )
     }
 }
 </script>
@@ -60,8 +68,9 @@ export default {
                 </div>
             </div>
             <div v-else>
-                <!-- <img src="../../public/loading.gif" alt="Caricamento"> -->
+                <img src="../../public/loading.gif" alt="Caricamento">
             </div>
+            <router-link :to="{name: 'ProjectCard' , params: {slug: 'facere-unde-et-aut-dolor'}}" class="btn btn-primary">Vai al primo progetto creato</router-link>
 
         </div>
 
