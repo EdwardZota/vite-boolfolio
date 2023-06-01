@@ -27,7 +27,8 @@ const router = createRouter({
         {
             path:'/project/:slug',
             name:'ProjectCard',
-            component : ProjectCard
+            component : ProjectCard,
+            props:true
         },
         {
             path:'/:pathMatch(.*)*',

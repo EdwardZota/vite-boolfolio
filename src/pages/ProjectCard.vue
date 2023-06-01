@@ -4,6 +4,9 @@ import axios from 'axios';
 
 export default {
     name: 'ProjectCard',
+    props:{
+        slug:String
+    },
     data(){
         return{
             baseUrl:'http://localhost:8000',
@@ -29,14 +32,11 @@ export default {
     mounted(){
         this.getProjectItem();
     },
-    created(){
-        this.$watch(
-            ()=>this.$route.params,
-            ()=>{
-                this.getProjectItem();
-            }
-        )
-    }
+    watch: {
+    slug() {
+      this.getProjectItem();
+    },
+  },
 }
 </script>
 
