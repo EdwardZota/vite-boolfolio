@@ -4,6 +4,7 @@ import MyHome from './pages/MyHome.vue';
 import ProjectList from './pages/ProjectList.vue';
 import ProjectCard from './pages/ProjectCard.vue';
 import MyContact from './pages/MyContact.vue';
+import ErrorPage from './pages/ErrorPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -27,6 +28,11 @@ const router = createRouter({
             path:'/project/:slug',
             name:'ProjectCard',
             component : ProjectCard
+        },
+        {
+            path:'/:pathMatch(.*)*',
+            name: 'ErrorPage',
+            component : ErrorPage
         }
     ]
 });

@@ -7,7 +7,7 @@ export default {
     data(){
         return{
             baseUrl:'http://localhost:8000',
-            project:[],
+            project:null,
         }
     },
     methods:{
@@ -18,7 +18,11 @@ export default {
             axios.get(`${this.baseUrl}/api/project/${slug}`)
             .then(response => {
                 console.log(response);
-                this.project= response.data.project;
+                if(response.data.success){
+                    this.project= response.data.project;
+                }else{
+                    this.$router.push({name: 'ErrorPage'});
+                }
             })
         }
     },
@@ -31,7 +35,7 @@ export default {
 <template>
     <div class="container">
         <div class="row m-5">
-            <div class="card p-0">
+            <div class="card p-0" v-if="project">
                 <img v-if="project.preview_image" :src="`${this.baseUrl}/storage/${this.project.preview_image}`" class="card-img-top" :alt="`${this.project.title}`">
                 <img v-else src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png" class="card-img-top" alt="Placeholder Image">
     
@@ -54,6 +58,9 @@ export default {
                     <p v-else>Nessuna tecnologia assegnata</p>
 
                 </div>
+            </div>
+            <div v-else>
+                <!-- <img src="../../public/loading.gif" alt="Caricamento"> -->
             </div>
 
         </div>
